@@ -1,0 +1,69 @@
+.App {
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 100px 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 120vh;
+}
+.Content {
+  display: table;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 200px;
+  margin-right: 50px;  
+  background-color: rgb(237, 224, 208);
+  padding: 100px;
+}
+
+.title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+
+
+body{
+  overflow-x: hidden;
+  
+}
+
+.instruction{
+  text-align: left;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+td, th {
+  border: 1px solid #e3e6e8;
+  text-align: center;
+  padding: 8px;
+}
+
+
+tr:nth-child() {
+  background-color: #ea1414;
+}
+
+tr:nth-child(odd) {
+  background-color: #ea1414;
+}
+
+
+.button {
+  background-color: #f0f7f0; /* Green */
+  border: 2px solid black;
+  color: rgb(10, 9, 10);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  
+}
