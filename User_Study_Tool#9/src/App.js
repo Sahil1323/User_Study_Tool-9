@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter, useNavigate, Route, Routes } from 'react-router-dom';
+import {  useNavigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-
-//pages
 
 import Table from "./components/task/table";
 import QuizML from "./components/Quiz/QuizML.js";
@@ -23,7 +21,6 @@ function App() {
 
 
   const hideQuiz = (index) => {
-    console.log('inside hidqQujiz')
     let newshowQuiz = [...showQuiz]
     newshowQuiz[index] = false
     setShowQuiz(newshowQuiz)
