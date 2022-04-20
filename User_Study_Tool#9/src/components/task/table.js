@@ -4,7 +4,6 @@ import './table.css'
 import { Navigate } from 'react-router'
 export default class Table extends React.Component {
    constructor(props) {
-      console.log("sdf0",props)
       super(props)
 
          this.state = {
@@ -56,7 +55,6 @@ export default class Table extends React.Component {
     }
 
    render() {
-      console.log("sdf0",this.props)
 
       return (
          <React.Fragment>
