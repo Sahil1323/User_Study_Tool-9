@@ -1,7 +1,6 @@
 import React from "react"
 
 import './table.css'
-import { Navigate } from 'react-router'
 export default class Table extends React.Component {
    constructor(props) {
       super(props)
