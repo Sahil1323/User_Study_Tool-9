@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, useNavigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 //pages
@@ -18,24 +18,34 @@ import QuizData from "./components/Quiz/QuizData.js";
 
 
 function App() {
+  const navigation = useNavigate();
+  const [showQuiz, setShowQuiz] = useState([true, true, true, true, true, true, true, true, true, true])
+
+
+  const hideQuiz = (index) => {
+    console.log('inside hidqQujiz')
+    let newshowQuiz = [...showQuiz]
+    newshowQuiz[index] = false
+    setShowQuiz(newshowQuiz)
+  }
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/QuizISE" element={<QuizISE/>} />
-          <Route path="/QuizBA" element={<QuizBA/>} />
-          <Route path="/table" element={<Table/>} />
-          <Route path="/QuizML" element={<QuizML/>} />
-          <Route path="/QuizJS" element={<QuizJS/>} />
-          <Route path="/QuizStats" element={<QuizStats/>} />
-          <Route path="/QuizSpatial" element={<QuizSpatial/>} />
-          <Route path="/QuizR" element={<QuizR/>} />
-          <Route path="/QuizReact" element={<QuizReact/>} />
-          <Route path="/QuizLM" element={<QuizLM/>} />
-          <Route path="/QuizData" element={<QuizData/>} />
-          
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Table showQuiz={showQuiz} hideQuiz={hideQuiz} navigation={navigation} />} />
+        <Route path="/QuizISE" element={<QuizISE navigation={navigation} />} />
+        <Route path="/QuizBA" element={<QuizBA />} />
+        <Route path="/table" element={<Table showQuiz={showQuiz} hideQuiz={hideQuiz} navigation={navigation}/>} />
+        <Route path="/QuizML" element={<QuizML navigation={navigation} />} />
+        <Route path="/QuizJS" element={<QuizJS />} />
+        <Route path="/QuizStats" element={<QuizStats />} />
+        <Route path="/QuizSpatial" element={<QuizSpatial />} />
+        <Route path="/QuizR" element={<QuizR />} />
+        <Route path="/QuizReact" element={<QuizReact />} />
+        <Route path="/QuizLM" element={<QuizLM />} />
+        <Route path="/QuizData" element={<QuizData />} />
+
+      </Routes>
     </div>
   );
 }

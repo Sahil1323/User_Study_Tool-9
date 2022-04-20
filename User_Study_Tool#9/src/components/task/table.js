@@ -1,14 +1,16 @@
 import React from "react"
-//import { useNavigate as navigate} from "react-router-dom"
-import './table.css'
 
+import './table.css'
+import { Navigate } from 'react-router'
 export default class Table extends React.Component {
    constructor(props) {
+      console.log("sdf0",props)
       super(props)
-      this.state = {
+
+         this.state = {
          students: [
-            { Task: 1, Description: 'In this task the questions are related to machine learning.', Duration: '~5 min', Operation: <a href="/QuizML"><button className="button">START TASK 1 TEST</button></a> },
-            { Task: 2, Description: 'In this task the questions are related to Internet Solution Engineering.', Duration: '~5 min', Operation: <a href="/QuizISE"><button className="button">START TASK 2 TEST</button></a> },
+            { Task: 1, Description: 'In this task the questions are related to machine learning.', Duration: '~5 min', Operation: <button onClick={()=> {this.props.hideQuiz(0);this.props.navigation('/QuizML')}} className="button">START TASK 1 TEST</button>},
+            { Task: 2, Description: 'In this task the questions are related to Internet Solution Engineering.', Duration: '~5 min', Operation: <button  onClick={()=> {this.props.hideQuiz(1);this.props.navigation('/QuizISE')}} className="button">START TASK 2 TEST</button>},
             { Task: 3, Description: 'In this task the questions are related to Bayesian Analysis.', Duration: '~5 min', Operation: <a href="/QuizBA"><button className="button">START TASK 3 TEST</button></a> },
             { Task: 4, Description: 'In this task the questions are related to JavaScript.', Duration: '~5 min', Operation: <a href="/QuizJS"><button  className="button">START TASK 4 TEST</button></a> },
             { Task: 5, Description: 'In this task the questions are related to Statistics.', Duration: '~5 min', Operation: <a href="/QuizStats"><button  className="button">START TASK 5 TEST</button></a> },
@@ -17,7 +19,8 @@ export default class Table extends React.Component {
             { Task: 8, Description: 'In this task the questions are related to React.', Duration: '~5 min', Operation: <a href="/QuizReact"><button className="button">START TASK 8 TEST</button></a> },
             { Task: 9, Description: 'In this task the questions are related to Linear Models.', Duration: '~5 min', Operation: <a href="/QuizLM"><button className="button">START TASK 9 TEST</button></a> },
             { Task: 10, Description: 'In this task the questions are related to Data Structure.', Duration: '~5 min', Operation: <a href="/QuizData"><button className="button">START TASK 10 TEST</button></a> }
-         ]
+         ],
+         showQuiz:[true,true,true,true,true,true,true,true,true,true]
       }
    }
 
@@ -28,21 +31,33 @@ export default class Table extends React.Component {
       })
    }
 
+
    renderTableData() {
       return this.state.students.map((student, index) => {
          const { Task, Description, Duration, Operation } = student //destructuring
          return (
-            <tr key={Task}>
+            this.props.showQuiz[index] && <tr key={Task}>
                <td>{Task}</td>
                <td>{Description}</td>
                <td>{Duration}</td>
-               <td>{Operation}</td>
+               <td>{Operation} </td>
             </tr>
          )
       })
    }
 
+   confirmAction() {
+      let confirmAction = window.confirm("Are you sure to execute this action?");
+      if (confirmAction) {
+        alert("Action successfully executed");
+      } else {
+        alert("Action canceled");
+      }
+    }
+
    render() {
+      console.log("sdf0",this.props)
+
       return (
          <React.Fragment>
             <div className="title">
@@ -62,7 +77,9 @@ export default class Table extends React.Component {
                      {this.renderTableData()}
                   </tbody>
                </table>
+               
             </div>
+            
 
          </React.Fragment>
       )
